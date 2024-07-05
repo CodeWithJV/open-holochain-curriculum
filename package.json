@@ -1,0 +1,25 @@
+{
+  "name": "open-holochain-curriculum",
+  "version": "1.0.0",
+  "description": "A modular technical curriculum for educators to mix and match to teach Holochain.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeWithJV/open-holochain-curriculum.git"
+  },
+  "keywords": [
+    "holochain"
+  ],
+  "author": "Joshua Vial",
+  "license": "CAL-1.0",
+  "bugs": {
+    "url": "https://github.com/CodeWithJV/open-holochain-curriculum/issues"
+  },
+  "homepage": "https://github.com/CodeWithJV/open-holochain-curriculum#readme",
+  "dependencies": {
+    "@slidev/cli": "^0.49.15"
+  }
+}

@@ -1,0 +1,15 @@
+[submodule "learn-holochain"]
+	path = learn-holochain
+	url = git@github.com:CodeWithJV/learn-holochain.git
+[submodule "challenges/holochain-challenge-1"]
+	path = challenges/holochain-challenge-1
+	url = git@github.com:CodeWithJV/holochain-challenge-1.git
+[submodule "challenges/holochain-challenge-2"]
+	path = challenges/holochain-challenge-2
+	url = git@github.com:CodeWithJV/holochain-challenge-2.git
+[submodule "challenges/holochain-challenge-3"]
+	path = challenges/holochain-challenge-3
+	url = git@github.com:CodeWithJV/holochain-challenge-3.git
+[submodule "challenges/holochain-challenge-4"]
+	path = challenges/holochain-challenge-4
+	url = git@github.com:CodeWithJV/holochain-challenge-4.git
