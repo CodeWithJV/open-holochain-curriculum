@@ -20,6 +20,25 @@
   },
   "homepage": "https://github.com/CodeWithJV/open-holochain-curriculum#readme",
   "dependencies": {
-    "@slidev/cli": "^0.49.15"
+    "@slidev/types": "^0.49.15",
+    "codemirror-theme-vars": "^0.1.2",
+    "prism-theme-vars": "^0.2.5"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^0.49.15",
+    "@unocss/preset-uno": "^0.60.2",
+    "prettier": "^3.2.5",
+    "prettier-plugin-slidev": "^1.0.5"
+  },
+  "slidev": {
+    "colorSchema": "light",
+    "highlighter": "shiki",
+    "defaults": {
+      "favicon": "https://www.holochain.org/img/gradiant_halo.svg",
+      "fonts": {
+        "sans": "URW Form",
+        "serif": "Mulish"
+      }
+    }
   }
 }
