@@ -9,7 +9,7 @@
         class="h-[150%] float-right rotate-[30deg]"
       />
     </div>
-    <div class="flex flex-col justify-end font font-serif">
+    <div class="flex flex-col justify-start font font-serif">
       <slot />
     </div>
   </div>
