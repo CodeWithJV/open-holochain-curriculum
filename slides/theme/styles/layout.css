@@ -23,3 +23,12 @@
     @apply mt-10;
   }
 }
+
+.slidev-layout {
+  p {
+    margin-bottom: 0px;
+  }
+  blockquote {
+    margin-bottom: 1em;
+  }
+}
