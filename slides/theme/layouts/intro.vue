@@ -2,7 +2,7 @@
   <div class="slidev-layout cover relative">
     <div class="absolute -z-50">
       <img
-        src="/assets/title.png"
+        src="../assets/title.png"
         alt=""
         class="translate-x-[-5%] -scale-y-101"
       />
