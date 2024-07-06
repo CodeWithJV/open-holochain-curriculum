@@ -1,5 +1,5 @@
+---
 layout: ./theme
-
 ---
 # conceptual building blocks of holochain
 
