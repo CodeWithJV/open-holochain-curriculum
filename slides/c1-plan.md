@@ -1,5 +1,3 @@
-- Starting a project with nix develop
-
 - Folder Structure
  - DNAs folder
   - Backend code
@@ -17,6 +15,8 @@
   - scripts for project
   - dependency files
  - (Image of folder structure)
+
+- How to start project using nix develop and npm start
 
 - Data in Holochain
  - Each peice of data in Holochain takes shape as a Record
