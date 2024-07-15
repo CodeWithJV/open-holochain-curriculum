@@ -39,7 +39,27 @@ layout: intro
 - Deterministic: Same result every time
 - Run before publishing to source chain
 - Can lead to agent blocking if rules are violated
-- Cannot use non-deterministic functions (e.g., time, random numbers)
+- Cannot use non-deterministic functions
+
+</v-clicks>
+
+---
+
+# Deterministic vs Non-Deterministic
+
+<v-clicks>
+
+Allowed (Deterministic):
+- Pure functions
+- Checking entry contents
+- Verifying signatures
+- Validating data structures
+
+Not Allowed (Non-Deterministic):
+- Current time or timestamps
+- Random number generation
+- External API calls
+- Reading cell owner's state
 
 </v-clicks>
 
@@ -47,11 +67,53 @@ layout: intro
 
 # Validation Outcomes
 
+```rust
+pub enum ValidateCallbackResult {
+    Valid,
+    Invalid(String),
+    UnresolvedDependencies(Vec<AnyDhtHash>),
+}
+```
+
 <v-clicks>
 
-- Valid
-- Invalid (with description)
-- Unresolved dependencies
+- Valid: Action passes all checks
+- Invalid: Action fails, with description
+- Unresolved dependencies: Missing data, retry later
+
+</v-clicks>
+
+---
+
+# Validation Example
+
+```rust
+#[hdk_extern]
+pub fn validate(op: Op) -> ExternResult<ValidateCallbackResult> {
+    match op {
+        Op::StoreEntry(store_entry) => {
+            match store_entry.entry_type() {
+                EntryType::App(app_entry_type) => {
+                    match app_entry_type {
+                        AppEntryType::Post(post) => {
+                            if post.content.len() > 280 {
+                                Ok(ValidateCallbackResult::Invalid(
+                                    "Post content exceeds 280 characters".into()
+                                ))
+                            } else {
+                                Ok(ValidateCallbackResult::Valid)
+                            }
+                        },
+                        _ => Ok(ValidateCallbackResult::Valid),
+                    }
+                },
+                _ => Ok(ValidateCallbackResult::Valid),
+            }
+        },
+        _ => Ok(ValidateCallbackResult::Valid),
+    }
+}
+```
 
 </v-clicks>
 
