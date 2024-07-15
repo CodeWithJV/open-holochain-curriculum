@@ -11,14 +11,12 @@ fonts:
 ---
 Testing and Validation
 ---
-layout: intro
----
-
-# Validation in Holochain
-
----
 
 # Validation Rules
+
+> Any executable code that checks data for validity. Validation rules can either be subconscious or written in a zome as a validation function.
+>
+> [Glossary: Validation Rule](https://developer.holochain.org/resources/glossary/#validation-rule)
 
 <v-clicks>
 
@@ -87,7 +85,7 @@ pub enum ValidateCallbackResult {
 
 ---
 
-## Some casic use cases for Validation Rules
+## Some basic use cases for Validation Rules
 
 <br/>
 
@@ -107,21 +105,8 @@ pub enum ValidateCallbackResult {
 <v-clicks>
 
 - Tryorama: Holochain's JavaScript testing suite
-- Tests zome functions and validation rules
-- API similar to frontend-backend communication
-
-</v-clicks>
-
----
-
-# Benefits of Testing
-
-<v-clicks>
-
-- Ensures zome functions work as expected
-- Verifies validation rules are effective
-- Simulates real-world scenarios
-- Improves overall application reliability
+- Great for testing zome functions
+- Great for testing validation rules
 
 </v-clicks>
 
