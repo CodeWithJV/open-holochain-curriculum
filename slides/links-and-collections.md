@@ -17,11 +17,6 @@ Links and Collections
 <v-clicks>
 
 - Connect two addressable items on the DHT
-
-</v-clicks>
-
-<v-clicks>
-
 - Examples of addressable items:
   - Actions
   - Entries
