@@ -17,12 +17,12 @@ Links and Collections
 <v-clicks>
 
 - Connect two addressable items on the DHT
-- Examples of addressable items:
+- Examples of addressables:
   - Actions
   - Entries
   - Agents
-  - Collections
-  - Any item with a public hash on the DHT
+  - Anchors
+  - Anything with a public hash on the DHT
 
 </v-clicks>
 
@@ -44,6 +44,22 @@ Links and Collections
 
 ---
 
+# Benefits of Linking Data
+
+<v-clicks>
+
+- Connects known things to unknown things
+- Helpful for indexing and retrieval
+- Examples:
+  - Link blog posts to an agent (see all posts by user)
+  - Link comments to a blog post (see all comments on a post)
+  - Link blog posts to a collection (get all blog posts on the DHT)
+  - Link updated entries to original entries
+
+</v-clicks>
+
+---
+
 # Link Structure
 
 <v-clicks>
@@ -59,33 +75,17 @@ Links have four components:
 
 ---
 
-# Collections in Holochain
+# Anchors in Holochain
 
 <v-clicks>
 
 - Define arbitrary points on the DHT
 - Can be linked to other addressable items
-- Useful for application-wide arrays
+- Useful for application-wide collections
   - Example: "All subreddits"
 
-- Not used for addressables corresponding to specific DHT items
-  - Example: "Messages from User"
-
-</v-clicks>
-
----
-
-# Benefits of Linking Data
-
-<v-clicks>
-
-- Connects known things to unknown things
-- Helpful for indexing and retrieval
-- Examples:
-  - Link blog posts to an agent (see all posts by user)
-  - Link comments to a blog post (see all comments on a post)
-  - Link blog posts to a collection (get all blog posts on the DHT)
-  - Link updated entries to original entries
+- Not used for collections corresponding to specific DHT items
+  - Example: "All Messages from User"
 
 </v-clicks>
 
