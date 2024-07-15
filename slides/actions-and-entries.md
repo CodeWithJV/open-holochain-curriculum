@@ -22,20 +22,6 @@ layout: intro
 <div class="flex">
 <div class="w-1/2">
 
-```
-project_root/
-  ├── DNAs/
-  │   └── your_dna/
-  │       ├── zomes/
-  │       │   ├── integrity/
-  │       │   └── coordinator/
-  │       └── dna.yaml
-  └── ...
-```
-
-</div>
-<div class="w-1/2">
-
 <v-clicks>
 
 - Contains backend code
@@ -48,6 +34,20 @@ project_root/
 </v-clicks>
 
 </div>
+<div class="w-1/2">
+
+```
+project_root/
+  ├── DNAs/
+  │   └── your_dna/
+  │       ├── zomes/
+  │       │   ├── integrity/
+  │       │   └── coordinator/
+  │       └── dna.yaml
+  └── ...
+```
+
+</div>
 </div>
 
 ---
@@ -55,17 +55,6 @@ project_root/
 # Tests Folder
 
 <div class="flex">
-<div class="w-1/2">
-
-```
-project_root/
-  ├── tests/
-  │   └── integration/
-  │       └── test_your_dna.rs
-  └── ...
-```
-
-</div>
 <div class="w-1/2">
 
 <v-clicks>
@@ -78,6 +67,17 @@ project_root/
 </v-clicks>
 
 </div>
+<div class="w-1/2">
+
+```
+project_root/
+  ├── tests/
+  │   └── integration/
+  │       └── test_your_dna.rs
+  └── ...
+```
+
+</div>
 </div>
 
 ---
@@ -85,18 +85,6 @@ project_root/
 # UI Folder
 
 <div class="flex">
-<div class="w-1/2">
-
-```
-project_root/
-  ├── ui/
-  │   ├── src/
-  │   ├── public/
-  │   └── package.json
-  └── ...
-```
-
-</div>
 <div class="w-1/2">
 
 <v-clicks>
@@ -114,6 +102,18 @@ project_root/
 </v-clicks>
 
 </div>
+<div class="w-1/2">
+
+```
+project_root/
+  ├── ui/
+  │   ├── src/
+  │   ├── public/
+  │   └── package.json
+  └── ...
+```
+
+</div>
 </div>
 
 ---
@@ -121,17 +121,6 @@ project_root/
 # Workdir Folder
 
 <div class="flex">
-<div class="w-1/2">
-
-```
-project_root/
-  ├── workdir/
-  │   ├── happ.yaml
-  │   └── .hc_live
-  └── ...
-```
-
-</div>
 <div class="w-1/2">
 
 <v-clicks>
@@ -145,6 +134,17 @@ project_root/
 </v-clicks>
 
 </div>
+<div class="w-1/2">
+
+```
+project_root/
+  ├── workdir/
+  │   ├── happ.yaml
+  │   └── .hc_live
+  └── ...
+```
+
+</div>
 </div>
 
 ---
@@ -152,17 +152,6 @@ project_root/
 # Configuration Files
 
 <div class="flex">
-<div class="w-1/2">
-
-```
-project_root/
-  ├── package.json
-  ├── flake.nix
-  ├── Cargo.toml
-  └── ...
-```
-
-</div>
 <div class="w-1/2">
 
 <v-clicks>
@@ -176,6 +165,17 @@ project_root/
   - Rust dependencies for DNAs
 
 </v-clicks>
+
+</div>
+<div class="w-1/2">
+
+```
+project_root/
+  ├── package.json
+  ├── flake.nix
+  ├── Cargo.toml
+  └── ...
+```
 
 </div>
 </div>
@@ -230,6 +230,7 @@ Actions Entries & Records
 - They store metadata for each record
 - Every action is committed to the agent's source chain
 - Actions provide a tamper-evident history of all changes
+- Essential for maintaining data integrity and traceability
 
 </v-clicks>
 
@@ -250,6 +251,15 @@ An Action contains:
 
 </v-clicks>
 
+<v-clicks>
+
+- This structure ensures:
+  - Chronological ordering of actions
+  - Verification of action authorship
+  - Linking between related pieces of data
+
+</v-clicks>
+
 ---
 
 # Common Action Types
@@ -258,14 +268,22 @@ An Action contains:
 
 1. Create
    - Introduces new data to the DHT
+   - Always corresponds to a new Entry
 
 2. Update
    - Modifies existing data
+   - References the original Entry being updated
 
 3. Delete
    - Marks data as deleted (but doesn't remove it entirely)
+   - Allows for data recovery and maintains history
 
-Note: Create and Update actions typically correspond to an Entry
+</v-clicks>
+
+<v-clicks>
+
+- Note: Create and Update actions typically correspond to an Entry
+- The action type determines how the DHT processes and stores the data
 
 </v-clicks>
 
@@ -288,6 +306,9 @@ Note: Create and Update actions typically correspond to an Entry
 
 # Summary
 
+<div class="flex">
+<div class="w-1/2">
+
 <v-clicks>
 
 - Records are the fundamental unit of data in Holochain
@@ -298,6 +319,14 @@ Note: Create and Update actions typically correspond to an Entry
 - Understanding this model is crucial for effective Holochain development
 
 </v-clicks>
+
+</div>
+<div class="w-1/2">
+
+![Placeholder Image](https://via.placeholder.com/400x300?text=Action+and+Entry+Relationship)
+
+</div>
+</div>
 
 ---
 layout: end
