@@ -9,8 +9,12 @@ fonts:
     serif: Lato
     weights: '100,300,400,700'
 ---
+Testing and Validation
+---
+layout: intro
+---
 
-# Validation and Testing in Holochain
+# Validation in Holochain
 
 ---
 
@@ -95,4 +99,4 @@ layout: end
 ---
 
 # Challenge 3
-Testing in Holochain
+Testing and Validation
