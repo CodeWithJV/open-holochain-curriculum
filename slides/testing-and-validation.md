@@ -36,7 +36,6 @@ layout: intro
 
 <v-clicks>
 
-- Deterministic: Same result every time
 - Run before publishing to source chain
 - Can lead to agent blocking if rules are violated
 - Cannot use non-deterministic functions
@@ -45,9 +44,10 @@ layout: intro
 
 ---
 
-# Deterministic vs Non-Deterministic
+## Deterministic vs Non-Deterministic
 
 <v-clicks>
+<br/>
 
 Allowed (Deterministic):
 - Pure functions
@@ -67,6 +67,13 @@ Not Allowed (Non-Deterministic):
 
 # Validation Outcomes
 
+
+<v-clicks>
+
+- Valid: Action passes all checks
+- Invalid: Action fails, with description
+- Unresolved dependencies: Missing data, retry later
+
 ```rust
 pub enum ValidateCallbackResult {
     Valid,
@@ -75,59 +82,21 @@ pub enum ValidateCallbackResult {
 }
 ```
 
-<v-clicks>
-
-- Valid: Action passes all checks
-- Invalid: Action fails, with description
-- Unresolved dependencies: Missing data, retry later
-
 </v-clicks>
+
 
 ---
 
-# Validation Example
+## Some casic use cases for Validation Rules
 
-```rust
-#[hdk_extern]
-pub fn validate(op: Op) -> ExternResult<ValidateCallbackResult> {
-    match op {
-        Op::StoreEntry(store_entry) => {
-            match store_entry.entry_type() {
-                EntryType::App(app_entry_type) => {
-                    match app_entry_type {
-                        AppEntryType::Post(post) => {
-                            if post.content.len() > 280 {
-                                Ok(ValidateCallbackResult::Invalid(
-                                    "Post content exceeds 280 characters".into()
-                                ))
-                            } else {
-                                Ok(ValidateCallbackResult::Valid)
-                            }
-                        },
-                        _ => Ok(ValidateCallbackResult::Valid),
-                    }
-                },
-                _ => Ok(ValidateCallbackResult::Valid),
-            }
-        },
-        _ => Ok(ValidateCallbackResult::Valid),
-    }
-}
-```
-
-</v-clicks>
-
----
-
-# Use Cases for Validation Rules
+<br/>
 
 <v-clicks>
 
-- Data structure validation
-- Enforcing game rules
-- Defining privileges
-- Rate limiting
-- Ensuring data integrity
+- Make sure chess moves, transactions, property transfers, and votes are legitimate.
+- Set up privileges for certain users based on certain actions
+- Limit the rate of certain actions to prevent abuse / over populating the DHT
+- Check for properly structured data, upper/lower bounds on numbers, string lengths, non-empty fields, or correctly formatted content
 
 </v-clicks>
 
