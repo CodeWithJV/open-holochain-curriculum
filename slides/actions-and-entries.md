@@ -9,21 +9,12 @@ fonts:
     serif: Lato
     weights: '100,300,400,700'
 ---
-
-# Project Structure, Actions and Entries
-
+Project Structure, Actions and Entries
+---
+layout: intro
 ---
 
 # Holochain Project Structure Overview
-
-<v-clicks>
-
-- A typical Holochain project has several key components
-- We'll explore each part of the structure in detail
-- Understanding this structure is crucial for Holochain development
-
-</v-clicks>
-
 ---
 
 # DNAs Folder
@@ -212,6 +203,12 @@ project_root/
 </v-clicks>
 
 ---
+layout: intro
+---
+
+# Data in Holochain
+Actions Entries & Records
+---
 
 # Data in Holochain
 
@@ -220,7 +217,6 @@ project_root/
 - Holochain uses a unique data model
 - Each piece of data is represented as a Record
 - Every Record contains an Action
-- This structure ensures data integrity and traceability
 
 </v-clicks>
 
@@ -290,22 +286,6 @@ Note: Create and Update actions typically correspond to an Entry
 
 ---
 
-# Relationship Between Actions and Entries
-
-<v-clicks>
-
-- Actions and Entries form the basis of Holochain's data model
-- Actions provide metadata and history
-- Entries contain the actual application data
-- Together, they create a robust, tamper-evident data structure
-
-</v-clicks>
-
-<!-- Insert image of the relationship between Records, Actions, and Entries -->
-![Records, Actions, and Entries Relationship](placeholder-relationship-image.png)
-
----
-
 # Summary
 
 <v-clicks>
@@ -323,10 +303,5 @@ Note: Create and Update actions typically correspond to an Entry
 layout: end
 ---
 
-# Challenge: Actions & Entries
-
-Design a simple blog post system using Holochain's Action and Entry model. 
-Consider:
-- What would be stored in the Action?
-- What would be stored in the Entry?
-- How would you handle comments?
+# Challenge 1
+Actions & Entries
