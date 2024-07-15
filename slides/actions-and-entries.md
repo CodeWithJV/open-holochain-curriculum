@@ -9,9 +9,7 @@ fonts:
     serif: Lato
     weights: '100,300,400,700'
 ---
-
-# Holochain Project Structure
-
+Project Structure, Actions and Entries
 ---
 
 # Folder Structure
@@ -27,7 +25,7 @@ fonts:
 - UI folder
   - Where all the frontend code is written
   - HC supports Svelte / Vue / Solid
-  - Can be written in any frontend language using their JavaScript API (React, CLI, etc)
+  - But UI can be written in any frontend language using their JavaScript API (React, CLI tool, etc)
 - workdir (not important)
   - Holochain configuration stuff
 - package.json / flake.nix / cargo.toml
@@ -45,7 +43,7 @@ fonts:
 
 <v-clicks>
 
-1. Use `nix develop` to set up the development environment
+1. Use `nix develop` to set up the development environment & install dependencies used by the HC CLI
 2. Run `npm start` to launch the project
 
 </v-clicks>
@@ -126,15 +124,9 @@ Some Actions correspond to an Entry:
 ![Records, Actions, and Entries Relationship](placeholder-relationship-image.png)
 
 ---
-
-# Challenge: Actions and Entries
-
-<!-- Add a challenge or exercise related to Actions and Entries here -->
-
----
 layout: end
 ---
 
-# Thank you!
+# Challenge
 
-Any questions?
+Actions & Entries
