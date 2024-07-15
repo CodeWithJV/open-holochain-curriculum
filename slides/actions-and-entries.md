@@ -262,7 +262,7 @@ An Action contains:
 
 ---
 
-# Common Action Types
+## Common Action Types
 
 <v-clicks>
 
@@ -307,6 +307,7 @@ An Action contains:
 # Summary
 
 <div class="flex">
+
 <div class="w-1/2">
 
 <v-clicks>
@@ -321,12 +322,19 @@ An Action contains:
 </v-clicks>
 
 </div>
-<div class="w-1/2">
 
-![Placeholder Image](https://via.placeholder.com/400x300?text=Action+and+Entry+Relationship)
+<div class="w-[40%] ml-auto">
+
+<v-click>
+
+<img src="theme/assets/records.png"></img>
+
+</v-click>
 
 </div>
+
 </div>
+
 
 ---
 layout: end
@@ -334,3 +342,5 @@ layout: end
 
 # Challenge 1
 Actions & Entries
+
+
