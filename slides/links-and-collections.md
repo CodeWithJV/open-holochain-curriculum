@@ -14,6 +14,11 @@ Links and Collections
 
 # Links in Holochain
 
+> A piece of metadata connecting one address to another. Data on the DHT is connected via one-way links. They allow you to create a graph database, making information easy to discover.
+> 
+> [Glossary: Links](https://developer.holochain.org/resources/glossary/#link) 
+
+
 <v-clicks>
 
 - Connect two addressable items on the DHT
@@ -35,26 +40,10 @@ Links and Collections
 - Unidirectional / One-to-Many
   - Example: Users to Messages
 
-- Bidirectional / Many-to-Many
+- Bidirectional (A combination of two one way links) / Many-to-Many
   - Example: Friends of Users
 
 - Unlike other DHT items, links can be permanently deleted
-
-</v-clicks>
-
----
-
-# Benefits of Linking Data
-
-<v-clicks>
-
-- Connects known things to unknown things
-- Helpful for indexing and retrieval
-- Examples:
-  - Link blog posts to an agent (see all posts by user)
-  - Link comments to a blog post (see all comments on a post)
-  - Link blog posts to a collection (get all blog posts on the DHT)
-  - Link updated entries to original entries
 
 </v-clicks>
 
@@ -66,16 +55,19 @@ Links and Collections
 
 Links have four components:
 
-1. Base address (the 'known' thing)
-2. Target address (the 'unknown' thing)
-3. Type
-4. Optional tag (extra information about the relationship)
+1. [Base address](https://developer.holochain.org/resources/glossary/#link-base) (the 'known' thing)
+2. [Target address](https://developer.holochain.org/resources/glossary/#link-target) (the 'unknown' thing)
+3. [Type](https://developer.holochain.org/resources/glossary/#link-type)
+4. [Optional tag](https://developer.holochain.org/resources/glossary/#link-tag) (extra information about the relationship)
 
 </v-clicks>
 
 ---
 
 # Anchors in Holochain
+> A Holochain application design pattern in which an easily discoverable base is designated as a location to store a large number of links. The base’s address is typically calculated from a short string, whose value is either hard-coded into the application’s code, discovered via link traversal, or entered via the UI.
+>
+> [Glossary: Anchors](https://developer.holochain.org/resources/glossary/#anchor)
 
 <v-clicks>
 
