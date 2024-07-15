@@ -2,7 +2,7 @@
   <div class="slidev-layout cover relative">
     <div class="absolute -z-50 w-full h-full translate-x-[36%]">
       <img
-        src="../assets/big-circle.svg"
+        src="./../assets/big-circle.svg"
         alt=""
         class="h-[100%] animate-spin-slow float-right"
       />

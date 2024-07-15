@@ -1,9 +1,15 @@
 ---
 theme: ./theme
+colorSchema: light
+highlighter: shiki
+aspectRatio: 16/9
+favicon: https://www.holochain.org/img/gradiant_halo.svg
+fonts:
+    sans: Mulish
+    serif: Lato
+    weights: '100,300,400,700'
 ---
-
-## Conceptual building blocks
-
+core concepts
 ---
 
 # Overview

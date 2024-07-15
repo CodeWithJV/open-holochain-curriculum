@@ -2,19 +2,28 @@
   /* default theme color */
   /* can be overrided by uses `themeConfig` option */
   --slidev-theme-primary: #5d8392;
+
+  @apply;
 }
 
 .slidev-layout.cover,
 .slidev-layout.intro {
   @apply h-full grid;
-
   h1 {
     @apply text-6xl leading-20;
-    @apply font-semibold;
+    @apply font-serif;
+    @apply font-medium;
+  }
+
+  h2 {
+    @apply text-5xl;
   }
 
   h1 + p {
     @apply -mt-2 opacity-50 mb-4;
+  }
+  h2 + p {
+    @apply opacity-50 mb-4;
   }
 
   p + h2,
@@ -24,11 +33,20 @@
   }
 }
 
-.slidev-layout {
-  p {
-    margin-bottom: 0px;
+.slidev-layout.default {
+  h1 {
+    @apply text-4xl;
+    @apply font-medium;
   }
-  blockquote {
-    margin-bottom: 1em;
+}
+.slidev-layout.default {
+  h2 {
+    @apply text-3xl;
+    @apply font-medium;
   }
+}
+
+p {
+  @apply font-sans;
+  @apply font-normal;
 }
