@@ -9,42 +9,205 @@ fonts:
     serif: Lato
     weights: '100,300,400,700'
 ---
-Project Structure, Actions and Entries
+
+# Project Structure, Actions and Entries
+
 ---
 
-# Folder Structure
+# Holochain Project Structure Overview
 
 <v-clicks>
 
-- DNAs folder
-  - Backend code
-  - Written in Rust
-  - Integrity and Coordinator zomes
-- Tests folder
-  - For testing backend application (cover later)
-- UI folder
-  - Where all the frontend code is written
-  - HC supports Svelte / Vue / Solid
-  - But UI can be written in any frontend language using their JavaScript API (React, CLI tool, etc)
-- workdir (not important)
-  - Holochain configuration stuff
-- package.json / flake.nix / cargo.toml
-  - Scripts for project
-  - Dependency files
+- A typical Holochain project has several key components
+- We'll explore each part of the structure in detail
+- Understanding this structure is crucial for Holochain development
 
 </v-clicks>
 
-<!-- Insert image of folder structure here -->
-![Folder Structure](placeholder-folder-structure.png)
-
 ---
 
-# Starting a Project
+# DNAs Folder
+
+<div class="flex">
+<div class="w-1/2">
+
+```
+project_root/
+  ├── DNAs/
+  │   └── your_dna/
+  │       ├── zomes/
+  │       │   ├── integrity/
+  │       │   └── coordinator/
+  │       └── dna.yaml
+  └── ...
+```
+
+</div>
+<div class="w-1/2">
 
 <v-clicks>
 
-1. Use `nix develop` to set up the development environment & install dependencies used by the HC CLI
-2. Run `npm start` to launch the project
+- Contains backend code
+- Written in Rust
+- Includes:
+  - Integrity zomes
+  - Coordinator zomes
+- `dna.yaml` defines DNA structure
+
+</v-clicks>
+
+</div>
+</div>
+
+---
+
+# Tests Folder
+
+<div class="flex">
+<div class="w-1/2">
+
+```
+project_root/
+  ├── tests/
+  │   └── integration/
+  │       └── test_your_dna.rs
+  └── ...
+```
+
+</div>
+<div class="w-1/2">
+
+<v-clicks>
+
+- For testing backend application
+- Typically includes integration tests
+- Ensures DNA functions correctly
+- We'll cover testing in more detail later
+
+</v-clicks>
+
+</div>
+</div>
+
+---
+
+# UI Folder
+
+<div class="flex">
+<div class="w-1/2">
+
+```
+project_root/
+  ├── ui/
+  │   ├── src/
+  │   ├── public/
+  │   └── package.json
+  └── ...
+```
+
+</div>
+<div class="w-1/2">
+
+<v-clicks>
+
+- Contains all frontend code
+- Holochain supports:
+  - Svelte
+  - Vue
+  - Solid
+- Can use any frontend framework with Holochain's JavaScript API
+  - React
+  - Angular
+  - Custom CLI tools
+
+</v-clicks>
+
+</div>
+</div>
+
+---
+
+# Workdir Folder
+
+<div class="flex">
+<div class="w-1/2">
+
+```
+project_root/
+  ├── workdir/
+  │   ├── happ.yaml
+  │   └── .hc_live
+  └── ...
+```
+
+</div>
+<div class="w-1/2">
+
+<v-clicks>
+
+- Contains Holochain configuration
+- Not typically modified directly
+- Includes:
+  - `happ.yaml`: Defines hApp structure
+  - `.hc_live`: Runtime data for Holochain
+
+</v-clicks>
+
+</div>
+</div>
+
+---
+
+# Configuration Files
+
+<div class="flex">
+<div class="w-1/2">
+
+```
+project_root/
+  ├── package.json
+  ├── flake.nix
+  ├── Cargo.toml
+  └── ...
+```
+
+</div>
+<div class="w-1/2">
+
+<v-clicks>
+
+- `package.json`: 
+  - Node.js dependencies
+  - Project scripts
+- `flake.nix`: 
+  - Nix configuration for reproducible builds
+- `Cargo.toml`: 
+  - Rust dependencies for DNAs
+
+</v-clicks>
+
+</div>
+</div>
+
+---
+
+# Starting a Holochain Project
+
+<v-clicks>
+
+1. Set up the development environment:
+   ```bash
+   nix develop
+   ```
+   - This command installs dependencies used by the Holochain CLI
+
+2. Launch the project:
+   ```bash
+   npm start
+   ```
+   - Starts both the Holochain conductor and the UI
+
+3. Access your application in the browser (typically at `http://localhost:8888`)
 
 </v-clicks>
 
@@ -54,26 +217,40 @@ Project Structure, Actions and Entries
 
 <v-clicks>
 
-- Each piece of data in Holochain takes the shape of a Record
+- Holochain uses a unique data model
+- Each piece of data is represented as a Record
 - Every Record contains an Action
+- This structure ensures data integrity and traceability
 
 </v-clicks>
 
 ---
 
-# Actions
+# Actions in Holochain
 
 <v-clicks>
 
-- Store metadata for the record
+- Actions are the backbone of Holochain's data model
+- They store metadata for each record
 - Every action is committed to the agent's source chain
-- Contains:
-  - The agent ID of the author
-  - A timestamp of when the action was committed to the source chain
-  - The type of action
-  - The hash of the previous action in the author's history of state changes (source chain)
-  - The index of the action in the author's source chain (action seq)
-  - If there is a corresponding entry, the hash of the entry
+- Actions provide a tamper-evident history of all changes
+
+</v-clicks>
+
+---
+
+# Action Contents
+
+<v-clicks>
+
+An Action contains:
+
+- The agent ID of the author
+- A timestamp of when the action was committed
+- The type of action (e.g., Create, Update, Delete)
+- The hash of the previous action in the author's source chain
+- The index of the action in the author's source chain (action sequence)
+- If there's a corresponding entry, the hash of that entry
 
 </v-clicks>
 
@@ -83,40 +260,44 @@ Project Structure, Actions and Entries
 
 <v-clicks>
 
-- Create
-- Update
-- Delete
+1. Create
+   - Introduces new data to the DHT
 
-Some Actions correspond to an Entry:
-- Create
-- Update
+2. Update
+   - Modifies existing data
 
-</v-clicks>
+3. Delete
+   - Marks data as deleted (but doesn't remove it entirely)
 
----
-
-# Entries
-
-<v-clicks>
-
-- A unit of physical data on the DHT (e.g., Text Message, Blog Post)
-- Arbitrary blob of bytes
-- Its address is the hash of that blob
-- Corresponds to a specific action
-- Once on the DHT, CANNOT be completely removed
-- Also contains the hash of the action associated with it
+Note: Create and Update actions typically correspond to an Entry
 
 </v-clicks>
 
 ---
 
-# Summary
+# Entries in Holochain
 
 <v-clicks>
 
-- Records are the action/entry pair but can also contain just the action
-- An action contains metadata about the record and the hash of the entry (if there is one)
-- An entry contains the action hash and an arbitrary blob of bytes (i.e., text data)
+- Entries are units of application data
+- Examples: Text messages, blog posts, user profiles
+- Stored as arbitrary blobs of bytes
+- The entry's address is the hash of its content
+- Once on the DHT, entries cannot be completely removed
+- Each entry contains the hash of its associated action
+
+</v-clicks>
+
+---
+
+# Relationship Between Actions and Entries
+
+<v-clicks>
+
+- Actions and Entries form the basis of Holochain's data model
+- Actions provide metadata and history
+- Entries contain the actual application data
+- Together, they create a robust, tamper-evident data structure
 
 </v-clicks>
 
@@ -124,9 +305,28 @@ Some Actions correspond to an Entry:
 ![Records, Actions, and Entries Relationship](placeholder-relationship-image.png)
 
 ---
+
+# Summary
+
+<v-clicks>
+
+- Records are the fundamental unit of data in Holochain
+- Records consist of an Action and (optionally) an Entry
+- Actions contain metadata about state changes
+- Entries contain the actual application data
+- This structure ensures data integrity and traceability
+- Understanding this model is crucial for effective Holochain development
+
+</v-clicks>
+
+---
 layout: end
 ---
 
-# Challenge
+# Challenge: Actions & Entries
 
-Actions & Entries
+Design a simple blog post system using Holochain's Action and Entry model. 
+Consider:
+- What would be stored in the Action?
+- What would be stored in the Entry?
+- How would you handle comments?
