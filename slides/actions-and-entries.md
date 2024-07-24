@@ -131,7 +131,7 @@ An Action contains:
 
 <v-click>
 
-<img src="theme/assets/records.png"></img>
+<img src="./assets/records.png"></img>
 
 </v-click>
 
