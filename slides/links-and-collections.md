@@ -29,20 +29,6 @@ Links and Collections
   - Anchors
   - Anything with a public hash on the DHT
 
-</v-clicks>
-
----
-
-# Types of Links
-
-<v-clicks>
-
-- Unidirectional / One-to-Many
-  - Example: Users to Messages
-
-- Bidirectional (A combination of two one way links) / Many-to-Many
-  - Example: Friends of Users
-
 - Unlike other DHT items, links can be permanently deleted
 
 </v-clicks>
@@ -57,7 +43,7 @@ Links have four components:
 
 1. [Base address](https://developer.holochain.org/resources/glossary/#link-base) (the 'known' thing)
 2. [Target address](https://developer.holochain.org/resources/glossary/#link-target) (the 'unknown' thing)
-3. [Type](https://developer.holochain.org/resources/glossary/#link-type)
+3. [Type](https://developer.holochain.org/resources/glossary/#link-type) (developer specified structure)
 4. [Optional tag](https://developer.holochain.org/resources/glossary/#link-tag) (extra information about the relationship)
 
 </v-clicks>
@@ -65,7 +51,7 @@ Links have four components:
 ---
 
 # Anchors in Holochain
-> A Holochain application design pattern in which an easily discoverable base is designated as a location to store a large number of links. The base’s address is typically calculated from a short string, whose value is either hard-coded into the application’s code, discovered via link traversal, or entered via the UI.
+> an easily discoverable base address is designated as a location to store a large number of links. The base’s address is typically calculated from a short string, whose value is either hard-coded into the application’s code, discovered via link traversal, or entered via the UI.
 >
 > [Glossary: Anchors](https://developer.holochain.org/resources/glossary/#anchor)
 

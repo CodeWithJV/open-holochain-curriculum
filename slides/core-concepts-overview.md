@@ -220,4 +220,12 @@ dive deeper via [gossip](https://developer.holochain.org/resources/glossary/#gos
 **Entries are the custom nouns of a holochain application** 
 
 </v-click>
+---
 
+- [Holochain application (hApp)](https://developer.holochain.org/resources/glossary/#application-app)
+- [DNA](https://developer.holochain.org/resources/glossary/#dna)
+- [Network](https://developer.holochain.org/resources/glossary/#network)
+- [Node](https://developer.holochain.org/resources/glossary/#node)
+- [Agent](https://developer.holochain.org/resources/glossary/#agent)
+- [Action](https://developer.holochain.org/resources/glossary/#record)
+- [Entry](https://developer.holochain.org/resources/glossary/#entry)

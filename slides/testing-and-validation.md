@@ -14,7 +14,7 @@ Testing and Validation
 
 # Validation Rules
 
-> Any executable code that checks data for validity. Validation rules can either be subconscious or written in a zome as a validation function.
+> Any executable code that checks data for validity. 
 >
 > [Glossary: Validation Rule](https://developer.holochain.org/resources/glossary/#validation-rule)
 
@@ -23,14 +23,15 @@ Testing and Validation
 - Define valid actions in the Holochain network
 - Similar to sanitizing incoming data in web2 servers
 - Ensure data integrity and security
-- Run on both client and receiving peers
-- Help identify corrupted or tampered data
+- Run by each agent before committing data to source chain
+- Checked by peers when propagating data
+- Publishing state changes that break validation results in expulsion.
 
 </v-clicks>
 
 ---
 
-# Characteristics of Validation Rules
+# Characteristics 
 
 <v-clicks>
 
@@ -43,9 +44,8 @@ Testing and Validation
 ---
 
 ## Deterministic vs Non-Deterministic
-
-<v-clicks>
 <br/>
+<v-clicks>
 
 Allowed (Deterministic):
 - Pure functions
