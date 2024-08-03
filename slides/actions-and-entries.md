@@ -18,13 +18,25 @@ layout: intro
 
 <v-clicks>
 
-- Holochain uses a unique data model
-- Each piece of data is represented as a Record
-- Every Record contains an Action
+- Entries are the nouns
+- Actions are the verbs
+- Records are a wrapper of an Entry + Action
 
 </v-clicks>
 
 ---
+layout: fact
+---
+
+It’s generally most useful to think about a Record <br/>as the primary unit of data.
+
+
+<v-click>
+There are lots of ways to reference data, a good default is the <br/>hash of the create Action.
+</v-click>
+
+---
+
 
 # Actions in Holochain
 
@@ -82,39 +94,66 @@ layout: intro
 
 </v-clicks>
 
-<v-clicks>
-
-- Note: Create and Update actions typically correspond to an Entry
-- The action type determines how the DHT processes and stores the data
-
-</v-clicks>
-
 ---
 
 # Entries in Holochain
+
+> A basic unit of application data in a Holochain app
+> 
+> [Glossary: Entry](https://developer.holochain.org/resources/glossary/#entry)
 
 <v-clicks>
 
 - Entries are units of application data
 - Examples: Text messages, blog posts, user profiles
 - Stored as arbitrary blobs of bytes
-- Application defined EntryTypes used for validation and deserialization
 - The entry's address is the hash of its content
 - Once on the DHT, entries cannot be completely removed
 
 </v-clicks>
 
 ---
+layout: fact
+---
+
+When defining an Entry Type, remember that every action stores the id of the author so you may not need an agent_id field.
+
+---
+
+# Entry Types
+
+> A specification for any sort of entry that a DNA should recognize and understand, similar to an OOP class or database table schema
+> 
+> [Glossary: Entry Type](https://developer.holochain.org/resources/glossary/#entry-type)
+<v-clicks>
+
+- Defining your Entry Types is a key part of building a holochain application
+- Defines whether Entries of this type should be private (only on author source chain) or public (on the DHT)
+- Entries are just blobs of bytes, Entry Types are used to deserialize
+- Each Entry Type can have its own validation rules
+
+</v-clicks>
+
+---
 
 # Records
-<br/>
+
+> The data structure that holds an action in an agent’s source chain.
+> 
+> [Glossary: Record](https://developer.holochain.org/resources/glossary/#record)
+
+<v-clicks>
 
 - Record = Entry + Action
 - If Entry contents is the same then the hash will be the same
 - A Record is always unique
 
+</v-clicks>
+<v-clicks>
+
 <img src='./assets/actions-and-entries.png' width="300"></img>
 
+</v-clicks>
 ---
 
 # Summary
@@ -154,6 +193,6 @@ layout: end
 ---
 
 # Challenge 1
-Actions & Entries
+[Actions & Entries](https://github.com/CodeWithJV/holochain-challenge-1)
 
 
