@@ -55,9 +55,9 @@ project_root/
 <v-clicks>
 
 - For testing backend application
-- Typically includes integration tests
+- Tryorama for integration tests
+- Written in javascript/typescript
 - Ensures DNA functions correctly
-- We'll cover testing in more detail later
 
 </v-clicks>
 
@@ -67,8 +67,7 @@ project_root/
 ```
 project_root/
   ├── tests/
-  │   └── integration/
-  │       └── test_your_dna.rs
+  │   └── your_file.test.ts
   └── ...
 ```
 
@@ -86,13 +85,12 @@ project_root/
 
 - Contains all frontend code
 - Holochain supports:
+  - Lit
   - Svelte
   - Vue
-  - Solid
-- Can use any frontend framework with Holochain's JavaScript API
   - React
-  - Angular
-  - Custom CLI tools
+  - Vanilla
+- Can use any frontend framework with Holochain's JavaScript API
 
 </v-clicks>
 
@@ -121,10 +119,9 @@ project_root/
 <v-clicks>
 
 - Contains Holochain configuration
-- Not typically modified directly
 - Includes:
   - `happ.yaml`: Defines hApp structure
-  - `.hc_live`: Runtime data for Holochain
+  - `web-happ.yaml`: hApp + ui bundle
 
 </v-clicks>
 
@@ -135,7 +132,7 @@ project_root/
 project_root/
   ├── workdir/
   │   ├── happ.yaml
-  │   └── .hc_live
+  │   └── web-happ.yaml
   └── ...
 ```
 
@@ -144,7 +141,7 @@ project_root/
 
 ---
 
-# Configuration Files
+# Package management
 
 <div class="flex">
 <div class="w-1/2">
@@ -177,7 +174,7 @@ project_root/
 
 ---
 
-# Starting a Holochain Project
+# Running a Holochain Project
 
 <v-clicks>
 
@@ -185,7 +182,7 @@ project_root/
    ```bash
    nix develop
    ```
-   - This command installs dependencies used by the Holochain CLI
+   - This command installs dependencies defined in `flake.nix`
 
 2. Launch the project:
    ```bash

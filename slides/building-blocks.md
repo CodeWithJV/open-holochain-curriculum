@@ -9,12 +9,12 @@ fonts:
     serif: Lato
     weights: '100,300,400,700'
 ---
-core concepts
+building blocks
 ---
 
 # Overview
 
-Let's go through the minimum amount of concepts to get started
+Let's go through a minimum amount of concepts to get started
 
 - [Holochain application (hApp)](https://developer.holochain.org/resources/glossary/#application-app)
 - [DNA](https://developer.holochain.org/resources/glossary/#dna)
@@ -69,8 +69,8 @@ layout: fact
 
 <v-clicks>
 
-- defines the data schema and validation rules of an application
-- exposes endpoints for agents to interact with the application
+- defines the data schema and validation rules of the package
+- exposes endpoints for client code to interact with the application
 - composed of multiple zomes (modules)
 - compiled down to WebAssembly, written in rust
 
@@ -123,7 +123,7 @@ integrity zomes **define the rules** of the game, coordination zomes **play the 
 
 <v-clicks>
 
-**migrating between networks is possible but expensive and non-trivial**
+**migrating between networks is poss/ble but expensive and non-trivial**
 
 **deterministic compilation of integrity code is important (and hard)**
 

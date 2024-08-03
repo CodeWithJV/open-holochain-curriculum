@@ -44,8 +44,6 @@ layout: intro
 
 <v-clicks>
 
-An Action contains:
-
 - The agent ID of the author
 - A timestamp of when the action was committed
 - The type of action (e.g., Create, Update, Delete)
@@ -100,11 +98,22 @@ An Action contains:
 - Entries are units of application data
 - Examples: Text messages, blog posts, user profiles
 - Stored as arbitrary blobs of bytes
+- Application defined EntryTypes used for validation and deserialization
 - The entry's address is the hash of its content
 - Once on the DHT, entries cannot be completely removed
-- Each entry contains the hash of its associated action
 
 </v-clicks>
+
+---
+
+# Records
+<br/>
+
+- Record = Entry + Action
+- If Entry contents is the same then the hash will be the same
+- A Record is always unique
+
+<img src='./assets/actions-and-entries.png' width="300"></img>
 
 ---
 
