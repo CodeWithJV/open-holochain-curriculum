@@ -118,6 +118,10 @@ layout: fact
 
 When defining an Entry Type, remember that every action stores the id of the author so you may not need an agent_id field.
 
+<v-click>
+One reason to include an agent_id in an EntryType is to make Entries unique to an agent.
+</v-click>
+
 ---
 
 # Entry Types
