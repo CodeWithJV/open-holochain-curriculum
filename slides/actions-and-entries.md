@@ -105,10 +105,6 @@ There are lots of ways to reference data, a good default is the <br/>hash of the
 > 
 > [Glossary: Entry](https://developer.holochain.org/resources/glossary/#entry)
 
-> The content of a record, separate from its header
-> 
-> [Glossary: Entry](https://developer.holochain.org/resources/glossary/#entry)
-
 <v-clicks>
 
 - Entries are units of application data
@@ -118,16 +114,6 @@ There are lots of ways to reference data, a good default is the <br/>hash of the
 - Once on the DHT, entries cannot be completely removed
 
 </v-clicks>
-
----
-layout: fact
----
-
-When defining an Entry Type, remember that every action stores the id of the author so you may not need an agent_id field.
-
-<v-click>
-One reason to include an agent_id in an EntryType is to make Entries unique to an agent.
-</v-click>
 
 ---
 
@@ -165,6 +151,13 @@ One reason to include an agent_id in an EntryType is to make Entries unique to a
 <img src='./assets/actions-and-entries.png' width="300"></img>
 
 </v-clicks>
+
+---
+layout: fact
+---
+
+If a record was a HTTP response, the action would be the header and the entry would be the body.
+
 ---
 
 # Entry Types 
@@ -182,6 +175,16 @@ pub struct Joke {
 ```
 
 This defines the structure of a Joke entry.
+
+---
+layout: fact
+---
+
+When defining an Entry Type, remember that every action stores the id of the author so you may not need an agent_id field.
+
+<v-click>
+One reason to include an agent_id in an EntryType is to make Entries unique to an agent.
+</v-click>
 
 
 ---
@@ -201,9 +204,70 @@ pub fn create_joke(joke: Joke) -> ExternResult<Record> {
 }
 ```
 
-[hdk docs: create_entry](https://docs.rs/hdk/latest/hdk/entry/fn.create_entry.html)
+- [hdk docs: create_entry](https://docs.rs/hdk/latest/hdk/entry/fn.create_entry.html)
+- [hdk docs: get](https://docs.rs/hdk/latest/hdk/entry/fn.get.html)
 
 This function creates a new joke entry and returns the corresponding record.
+
+---
+
+# Get Details
+
+`get` returns one record, `get_details` returns many
+
+```rust
+#[hdk_extern]
+pub fn get_joke_by_hash(original_joke_hash: ActionHash) -> ExternResult<Option<Record>> {
+    let Some(details) = get_details(original_joke_hash, GetOptions::default())? else {
+        return Ok(None);
+    };
+    match details {
+        Details::Record(details) => Ok(Some(details.record)),
+        _ => {
+            Err(wasm_error!(WasmErrorInner::Guest(String::from("Malformed get details response"))))
+        }
+    }
+}
+
+```
+
+[hdk docs: get_details](https://docs.rs/hdk/latest/hdk/entry/fn.get_details.html)
+---
+
+# Update Entry
+
+```rust
+#[derive(Serialize, Deserialize, Debug)]
+pub struct UpdateJokeInput {
+    pub previous_joke_hash: ActionHash,
+    pub updated_joke: Joke,
+}
+
+#[hdk_extern]
+pub fn update_joke(input: UpdateJokeInput) -> ExternResult<Record> {
+    let updated_joke_hash = update_entry(input.previous_joke_hash.clone(), &input.updated_joke)?;
+    let record = get(updated_joke_hash.clone(), GetOptions::default())?.ok_or(
+        wasm_error!(WasmErrorInner::Guest(String::from("Could not find the newly updated Joke")))
+    )?;
+    Ok(record)
+}
+```
+
+[hdk docs: update_entry](https://docs.rs/hdk/latest/hdk/entry/fn.update_entry.html)
+
+---
+
+# Delete Entry
+
+```rust
+
+#[hdk_extern]
+pub fn delete_joke(original_joke_hash: ActionHash) -> ExternResult<ActionHash> {
+    delete_entry(original_joke_hash)
+}
+```
+
+[hdk docs: delete_entry](https://docs.rs/hdk/latest/hdk/entry/fn.delete_entry.html)
 
 ---
 
