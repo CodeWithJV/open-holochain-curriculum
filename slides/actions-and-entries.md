@@ -50,6 +50,19 @@ There are lots of ways to reference data, a good default is the <br/>hash of the
 
 </v-clicks>
 
+```rust
+#[hdk_extern]
+pub fn create_joke(joke: Joke) -> ExternResult<Record> {
+    let joke_hash = create_entry(&EntryTypes::Joke(joke.clone()))?;
+    let record = get(joke_hash.clone(), GetOptions::default())?.ok_or(
+        wasm_error!(WasmErrorInner::Guest(String::from("Could not find the newly created Joke")))
+    )?;
+    Ok(record)
+}
+```
+
+This function creates a new joke entry and returns the corresponding record.
+
 ---
 
 # Action Contents
@@ -111,6 +124,17 @@ There are lots of ways to reference data, a good default is the <br/>hash of the
 - Once on the DHT, entries cannot be completely removed
 
 </v-clicks>
+
+```rust
+#[hdk_entry_helper]
+#[derive(Clone)]
+pub struct Joke {
+    pub text: String,
+    pub creator: AgentPubKey,
+}
+```
+
+This defines the structure of a Joke entry.
 
 ---
 layout: fact
