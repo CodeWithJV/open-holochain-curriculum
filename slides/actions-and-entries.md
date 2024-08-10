@@ -40,6 +40,10 @@ There are lots of ways to reference data, a good default is the <br/>hash of the
 
 # Actions in Holochain
 
+> A record of a state change in an agent's source chain
+> 
+> [Glossary: Action](https://developer.holochain.org/resources/glossary/#action)
+
 <v-clicks>
 
 - Actions are the backbone of Holochain's data model
@@ -98,6 +102,10 @@ There are lots of ways to reference data, a good default is the <br/>hash of the
 # Entries in Holochain
 
 > A basic unit of application data in a Holochain app
+> 
+> [Glossary: Entry](https://developer.holochain.org/resources/glossary/#entry)
+
+> The content of a record, separate from its header
 > 
 > [Glossary: Entry](https://developer.holochain.org/resources/glossary/#entry)
 
