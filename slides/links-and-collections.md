@@ -143,6 +143,53 @@ delete_link(link_create_hash)?;
 
 ---
 
+# Paths in Holochain
+> A path is a string that represents a location in a tree-like structure. It's similar to a file system path. Paths are used to create predictable entry hashes that can serve as base addresses for links.
+>
+> [Glossary: Path](https://developer.holochain.org/resources/glossary/#path)
+
+<v-clicks>
+
+- Create predictable entry hashes
+- Organize data in a hierarchical structure
+- Can be used as link bases for collections
+- Components are separated by periods (.)
+- Example: "all_posts.2023.july"
+
+</v-clicks>
+
+---
+
+# Creating and Using Paths
+
+<v-clicks>
+
+- Use the `Path` struct to create paths
+- Example:
+
+```rust
+let path = Path::from("all_posts");
+let path_hash = path.path_entry_hash()?;
+```
+
+- Use the path hash as a link base:
+
+```rust
+create_link(path_hash, target_hash, LinkTypes::AllPosts, ())?;
+```
+
+- Retrieve links using the path:
+
+```rust
+let links = get_links(
+    GetLinksInputBuilder::try_new(path_hash, LinkTypes::AllPosts)?.build()
+)?;
+```
+
+</v-clicks>
+
+---
+
 # Use Cases for Links
 
 <v-clicks>
