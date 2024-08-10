@@ -50,6 +50,51 @@ Links have four components:
 
 ---
 
+# Creating Links
+
+<v-clicks>
+
+- Use the `create_link` function
+- Example:
+
+```rust
+create_link(
+    base_address,
+    target_address,
+    LinkTypes::MyLinkType,
+    link_tag
+)?;
+```
+
+- `base_address` and `target_address` can be any addressable item
+- `LinkTypes` is an enum defined in your integrity zome
+- `link_tag` is optional and can contain any serializable data
+
+</v-clicks>
+
+---
+
+# Deleting Links
+
+<v-clicks>
+
+- Use the `delete_link` function
+- Example:
+
+```rust
+delete_link(link_create_hash)?;
+```
+
+- `link_create_hash` is the hash of the CreateLink action
+- To delete a link, you need to:
+  1. Find the link (usually with `get_links`)
+  2. Extract the `create_link_hash` from the Link
+  3. Call `delete_link` with this hash
+
+</v-clicks>
+
+---
+
 # Anchors in Holochain
 > an easily discoverable base address is designated as a location to store a large number of links. The base’s address is typically calculated from a short string, whose value is either hard-coded into the application’s code, discovered via link traversal, or entered via the UI.
 >
@@ -77,6 +122,30 @@ Links have four components:
 - Creating relationships between data
 - Building complex data structures
 - Enabling efficient querying and filtering
+
+</v-clicks>
+
+---
+
+# Retrieving Links
+
+<v-clicks>
+
+- Use the `get_links` function
+- Example:
+
+```rust
+let links = get_links(
+    GetLinksInputBuilder::try_new(base_address, LinkTypes::MyLinkType)?
+    .build()
+)?;
+```
+
+- Returns a vector of `Link` structs
+- Each `Link` contains:
+  - `target`: the address the link points to
+  - `tag`: the optional tag data
+  - `create_link_hash`: hash of the CreateLink action (useful for deletion)
 
 </v-clicks>
 
