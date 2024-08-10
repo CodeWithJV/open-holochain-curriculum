@@ -26,7 +26,7 @@ Links and Collections
   - Actions
   - Entries
   - Agents
-  - Anchors
+  - Paths
   - Anything with a public hash on the DHT
 
 - Unlike other DHT items, links can be permanently deleted
@@ -36,6 +36,8 @@ Links and Collections
 ---
 
 # Link Structure
+
+[hdk docs: Link](https://docs.rs/hdk/latest/hdk/link/index.html)
 
 <v-clicks>
 
@@ -56,7 +58,6 @@ Links have four components:
 <v-clicks>
 
 - Use the `create_link` function
-- Example:
 
 ```rust
 create_link(
@@ -82,7 +83,6 @@ create_link(
 <v-clicks>
 
 - Use the `get_links` function
-- Example:
 
 ```rust
 let links = get_links(
@@ -108,7 +108,6 @@ let links = get_links(
 <v-clicks>
 
 - Use the `delete_link` function
-- Example:
 
 ```rust
 delete_link(link_create_hash)?;
@@ -124,29 +123,12 @@ delete_link(link_create_hash)?;
 
 ---
 
-# Anchors in Holochain
-> an easily discoverable base address is designated as a location to store a large number of links. The base’s address is typically calculated from a short string, whose value is either hard-coded into the application’s code, discovered via link traversal, or entered via the UI.
->
-> [Glossary: Anchors](https://developer.holochain.org/resources/glossary/#anchor)
-
-<v-clicks>
-
-- Define arbitrary points on the DHT
-- Can be linked to other addressable items
-- Useful for application-wide collections
-  - Example: "All subreddits"
-
-- Not used for collections corresponding to specific DHT items
-  - Example: "All Messages from User"
-
-</v-clicks>
-
----
-
 # Paths in Holochain
 > A path is a string that represents a location in a tree-like structure. It's similar to a file system path. Paths are used to create predictable entry hashes that can serve as base addresses for links.
 >
 > [Glossary: Path](https://developer.holochain.org/resources/glossary/#path)
+
+[hdk docs: Path](https://docs.rs/hdk/latest/hdk/prelude/struct.Path.html)
 
 <v-clicks>
 
@@ -205,44 +187,5 @@ let links = get_links(
 layout: end
 ---
 
-# Example: Creating and Retrieving Links with Anchors
-
----
-
-# Creating Links with a Path
-
-```rust
-use hdk::prelude::*;
-
-#[hdk_extern]
-pub fn create_post(post: Post) -> ExternResult<ActionHash> {
-    let post_hash = create_entry(&EntryTypes::Post(post.clone()))?;
-    let record = get(post_hash.clone(), GetOptions::default())?.ok_or(
-        wasm_error!(WasmErrorInner::Guest("Could not find the newly created Post".to_string()))
-    )?;
-
-    let path = Path::from("all_posts");
-    create_link(path.path_entry_hash()?, post_hash.clone(), LinkTypes::AllPosts, ())?;
-    Ok(record)
-}
-
-```
-
----
-
-# Retrieving Links with a Path
-
-```rust
-use hdk::prelude::*;
-
-#[hdk_extern]
-pub fn get_all_posts() -> ExternResult<Vec<Link>> {
-    let path = Path::from("all_posts");
-    get_links(GetLinksInputBuilder::try_new(path.path_entry_hash()?, LinkTypes::AllPosts)?.build())
-}
-```
-
----
-
 # Challenge 2
-Links & Collections
+[Links & Collections](https://github.com/codewithjv/holochain-challenge-2)
