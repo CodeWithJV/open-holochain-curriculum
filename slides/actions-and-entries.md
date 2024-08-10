@@ -49,20 +49,6 @@ There are lots of ways to reference data, a good default is the <br/>hash of the
 - Essential for maintaining data integrity and traceability
 
 </v-clicks>
-
-```rust
-#[hdk_extern]
-pub fn create_joke(joke: Joke) -> ExternResult<Record> {
-    let joke_hash = create_entry(&EntryTypes::Joke(joke.clone()))?;
-    let record = get(joke_hash.clone(), GetOptions::default())?.ok_or(
-        wasm_error!(WasmErrorInner::Guest(String::from("Could not find the newly created Joke")))
-    )?;
-    Ok(record)
-}
-```
-
-This function creates a new joke entry and returns the corresponding record.
-
 ---
 
 # Action Contents
@@ -125,17 +111,6 @@ This function creates a new joke entry and returns the corresponding record.
 
 </v-clicks>
 
-```rust
-#[hdk_entry_helper]
-#[derive(Clone)]
-pub struct Joke {
-    pub text: String,
-    pub creator: AgentPubKey,
-}
-```
-
-This defines the structure of a Joke entry.
-
 ---
 layout: fact
 ---
@@ -182,6 +157,46 @@ One reason to include an agent_id in an EntryType is to make Entries unique to a
 <img src='./assets/actions-and-entries.png' width="300"></img>
 
 </v-clicks>
+---
+
+# Entry Types 
+
+are defined in the integrity zome
+
+
+```rust
+#[hdk_entry_helper]
+#[derive(Clone)]
+pub struct Joke {
+    pub text: String,
+    pub creator: AgentPubKey,
+}
+```
+
+This defines the structure of a Joke entry.
+
+
+---
+
+# CRUD Operations 
+
+are defined in the coordination zome
+
+```rust
+#[hdk_extern]
+pub fn create_joke(joke: Joke) -> ExternResult<Record> {
+    let joke_hash = create_entry(&EntryTypes::Joke(joke.clone()))?;
+    let record = get(joke_hash.clone(), GetOptions::default())?.ok_or(
+        wasm_error!(WasmErrorInner::Guest(String::from("Could not find the newly created Joke")))
+    )?;
+    Ok(record)
+}
+```
+
+[hdk docs: create_entry](https://docs.rs/hdk/latest/hdk/entry/fn.create_entry.html)
+
+This function creates a new joke entry and returns the corresponding record.
+
 ---
 
 # Summary
