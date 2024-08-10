@@ -158,5 +158,64 @@ delete_link(link_create_hash)?;
 layout: end
 ---
 
+# Example: Creating and Retrieving Links with Anchors
+
+---
+
+# Creating Links with Anchors
+
+```rust
+use hdk::prelude::*;
+
+#[hdk_extern]
+pub fn create_post(post: Post) -> ExternResult<ActionHash> {
+    // Create the post entry
+    let post_hash = create_entry(&post)?;
+    
+    // Create an anchor for all posts
+    let all_posts_anchor = anchor("all_posts".into(), "".into())?;
+    
+    // Link the anchor to the post
+    create_link(all_posts_anchor, post_hash.clone(), LinkTypes::AllPosts, ())?;
+    
+    Ok(post_hash)
+}
+```
+
+---
+
+# Retrieving Links with Anchors
+
+```rust
+use hdk::prelude::*;
+
+#[hdk_extern]
+pub fn get_all_posts() -> ExternResult<Vec<Post>> {
+    // Get the anchor for all posts
+    let all_posts_anchor = anchor("all_posts".into(), "".into())?;
+    
+    // Retrieve links from the anchor
+    let links = get_links(GetLinksInputBuilder::try_new(
+        all_posts_anchor,
+        LinkTypes::AllPosts
+    )?.build())?;
+    
+    // Fetch each post entry
+    let posts: Vec<Post> = links
+        .into_iter()
+        .filter_map(|link| {
+            let element = get(link.target, GetOptions::default())
+                .ok()?
+                .and_then(|el| el.entry().to_app_option::<Post>().ok()??);
+            Some(element)
+        })
+        .collect();
+    
+    Ok(posts)
+}
+```
+
+---
+
 # Challenge 2
 Links & Collections
