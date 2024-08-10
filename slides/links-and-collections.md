@@ -52,6 +52,7 @@ Links have four components:
 
 # Creating Links
 
+[hdk docs: create_link](https://docs.rs/hdk/latest/hdk/link/fn.create_link.html)
 <v-clicks>
 
 - Use the `create_link` function
@@ -74,7 +75,35 @@ create_link(
 
 ---
 
+# Retrieving Links
+
+[hdk docs: get_links](https://docs.rs/hdk/latest/hdk/link/fn.get_links.html)
+
+<v-clicks>
+
+- Use the `get_links` function
+- Example:
+
+```rust
+let links = get_links(
+    GetLinksInputBuilder::try_new(base_address, LinkTypes::MyLinkType)?
+    .build()
+)?;
+```
+
+- Returns a vector of `Link` structs
+- Each `Link` contains:
+  - `target`: the address the link points to
+  - `tag`: the optional tag data
+  - `create_link_hash`: hash of the CreateLink action (useful for deletion)
+
+</v-clicks>
+
+---
+
 # Deleting Links
+
+[hdk docs: delete_link](https://docs.rs/hdk/latest/hdk/link/fn.delete_link.html)
 
 <v-clicks>
 
@@ -122,30 +151,6 @@ delete_link(link_create_hash)?;
 - Creating relationships between data
 - Building complex data structures
 - Enabling efficient querying and filtering
-
-</v-clicks>
-
----
-
-# Retrieving Links
-
-<v-clicks>
-
-- Use the `get_links` function
-- Example:
-
-```rust
-let links = get_links(
-    GetLinksInputBuilder::try_new(base_address, LinkTypes::MyLinkType)?
-    .build()
-)?;
-```
-
-- Returns a vector of `Link` structs
-- Each `Link` contains:
-  - `target`: the address the link points to
-  - `tag`: the optional tag data
-  - `create_link_hash`: hash of the CreateLink action (useful for deletion)
 
 </v-clicks>
 
