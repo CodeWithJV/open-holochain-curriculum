@@ -50,6 +50,7 @@ There are lots of ways to reference data, a good default is the <br/>hash of the
 - They store metadata for each record
 - Every action is committed to the agent's source chain
 - Actions provide a tamper-evident history of all changes
+- Actions are immutable once committed to the source chain
 - Essential for maintaining data integrity and traceability
 
 </v-clicks>
@@ -126,8 +127,10 @@ There are lots of ways to reference data, a good default is the <br/>hash of the
 
 - Defining your Entry Types is a key part of building a holochain application
 - Defines whether Entries of this type should be private (only on author source chain) or public (on the DHT)
-- Entries are just blobs of bytes, Entry Types are used to deserialize
-- Each Entry Type can have its own validation rules
+- Entries are content-addressed blobs of bytes (hash of content is their ID)
+- Entry Types provide schema for deserialization and validation
+- Each Entry Type defines privacy rules (DHT vs private source chain)
+- Validation rules can cross-reference other entry types
 
 </v-clicks>
 

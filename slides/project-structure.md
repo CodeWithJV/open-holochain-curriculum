@@ -89,7 +89,7 @@ project_root/
   - Svelte
   - Vue
   - React
-  - Vanilla
+  - Vanilla JS
 - Can use any frontend framework with Holochain's JavaScript API
 
 </v-clicks>

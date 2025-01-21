@@ -32,7 +32,7 @@ layout: fact
 
 <v-clicks> 
 
-### like a cross betweeen github and bittorrent 
+### like a cross betweeen git and bittorrent 
 
 ### An end-to-end open source P2P app framework
 
@@ -123,7 +123,7 @@ integrity zomes **define the rules** of the game, coordination zomes **play the 
 
 <v-clicks>
 
-**migrating between networks is poss/ble but expensive and non-trivial**
+**migrating between networks is possible but expensive and non-trivial**
 
 **deterministic compilation of integrity code is important (and hard)**
 
@@ -222,10 +222,14 @@ dive deeper via [gossip](https://developer.holochain.org/resources/glossary/#gos
 </v-click>
 ---
 
-- [Holochain application (hApp)](https://developer.holochain.org/resources/glossary/#application-app)
-- [DNA](https://developer.holochain.org/resources/glossary/#dna)
-- [Network](https://developer.holochain.org/resources/glossary/#network)
-- [Node](https://developer.holochain.org/resources/glossary/#node)
-- [Agent](https://developer.holochain.org/resources/glossary/#agent)
-- [Action](https://developer.holochain.org/resources/glossary/#record)
-- [Entry](https://developer.holochain.org/resources/glossary/#entry)
+# In Summary
+
+|                                                                                                     |                                                                            |
+|-----------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------|
+| [Holochain application (hApp)](https://developer.holochain.org/resources/glossary/#application-app) | Collection of back-end and front-end components a user can install and run |
+| [DNA](https://developer.holochain.org/resources/glossary/#dna)                                      | Package of executable code defining shared rules                           |
+| [Network](https://developer.holochain.org/resources/glossary/#network)                              | Collection of nodes forming a validating DHT                               |
+| [Node](https://developer.holochain.org/resources/glossary/#node)                                    | Individual agent that validates and stores state                           |
+| [Agent](https://developer.holochain.org/resources/glossary/#agent)                                  | Participant in network who authors state changes                        |
+| [Action](https://developer.holochain.org/resources/glossary/#record)                                | Signed state change in the system                                          |
+| [Entry](https://developer.holochain.org/resources/glossary/#entry)                                  | Application-specific data unit                                             |

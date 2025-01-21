@@ -69,6 +69,7 @@ create_link(
 ```
 
 - `base_address` and `target_address` can be any addressable item
+  - there doesn't need to be any data in the DHT at those addresses
 - `LinkTypes` is an enum defined in your integrity zome
 - `link_tag` is optional and can contain any serializable data
 
