@@ -63,6 +63,13 @@ The curriculum follows a progressive learning sequence through these slide decks
    - Use cases for validation: data shape, privileges, rate limiting
    - Testing with Tryorama and Vitest
 
+6. **[Scaffolding and Signals](https://codewithjv.github.io/open-holochain-curriculum/slides/scaffolding-and-signals/)**
+   - Rapid app development with scaffolding tool
+   - Using hc scaffold commands for common patterns
+   - Real-time communication with signals
+   - Remote signals between agents
+   - Security considerations for signals
+
 ### Coding Challenges
 
 Each challenge applies concepts from corresponding slides with increasing complexity:
@@ -126,12 +133,12 @@ Slides are built using [slidev](https://sli.dev/) - checkout their [guide](https
 ## Viewing the Slides
 
 The slides are available online at: 
-- [Holochain Curriculum Landing Page](https://codewithjv.github.io/open-holochain-curriculum/)
 - [Building Blocks](https://codewithjv.github.io/open-holochain-curriculum/slides/building-blocks/)
 - [Project Structure](https://codewithjv.github.io/open-holochain-curriculum/slides/project-structure/)
 - [Actions and Entries](https://codewithjv.github.io/open-holochain-curriculum/slides/actions-and-entries/)
 - [Links and Collections](https://codewithjv.github.io/open-holochain-curriculum/slides/links-and-collections/)
 - [Testing and Validation](https://codewithjv.github.io/open-holochain-curriculum/slides/testing-and-validation/)
+- [Scaffolding and Signals](https://codewithjv.github.io/open-holochain-curriculum/slides/scaffolding-and-signals/)
 
 To run the slides locally:
 ```bash
@@ -144,6 +151,7 @@ npx slidev slides/project-structure.md
 npx slidev slides/actions-and-entries.md
 npx slidev slides/links-and-collections.md
 npx slidev slides/testing-and-validation.md
+npx slidev slides/scaffolding-and-signals.md
 ```
 
 ## Development

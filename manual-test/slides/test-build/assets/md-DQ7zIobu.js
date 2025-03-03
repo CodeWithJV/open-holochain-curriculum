@@ -1,0 +1,9 @@
+import{_ as r}from"./slidev/VClick-Dy34bnZs.js";import{_ as c}from"./slidev/VClicks-67RMJ3Dk.js";import{o as u,c as d,k as o,g as m,l as n,q as p,s as _,A as t,e}from"./modules/vue-D4SXC02w.js";import{_ as h}from"./default-Bet583MZ.js";import{u as f,f as g}from"./slidev/context-DHqUi6Wg.js";import"./index-Bj8H3ufz.js";import"./modules/shiki-T7-tTmNb.js";import"./big-circle-BcQR0eat.js";const k=e("h1",null,"DNA",-1),v=e("blockquote",null,[e("p",null,"A package of executable code that defines the shared 'rules of the game' for a group of agents."),e("p",null,[e("a",{href:"https://developer.holochain.org/resources/glossary/#dna",target:"_blank"},"Glossary: DNA")])],-1),b=e("ul",null,[e("li",null,"defines the data schema and validation rules of the package"),e("li",null,"exposes endpoints for client code to interact with the application"),e("li",null,"composed of multiple zomes (modules)"),e("li",null,"compiled down to WebAssembly, written in rust")],-1),A=e("p",null,[e("strong",null,"Like a backend microservice running in its own container")],-1),N={__name:"building-blocks.md__slidev_5",setup(w){const{$slidev:x,$nav:$,$clicksContext:s,$clicks:D,$page:y,$renderContext:C,$frontmatter:a}=f();return s.setup(),(z,B)=>{const l=c,i=r;return u(),d(h,p(_(t(g)(t(a),4))),{default:o(()=>[k,v,m(` 
+Instructor Notes:
+- DNAs are the backend component of Holochain apps
+- Challenge 1 uses a single DNA called "jokes"
+- The microservice analogy helps students understand the modularity
+- Each DNA defines its own network, data model, and validation rules
+- DNAs are compiled to WebAssembly, which enables them to run in various environments
+- Emphasize that DNAs contain zomes, which we'll explore next
+`),n(l,null,{default:o(()=>[b]),_:1}),n(i,null,{default:o(()=>[A]),_:1})]),_:1},16)}}},H=N;export{H as default};

@@ -1,0 +1,14 @@
+- why holochain
+- quick overview of p2p
+- key jargon - glossary
+- where to get help
+  - llm ?
+  - developer portal
+  - rust docs
+  - github repos
+  - discord
+- key ideas
+  - github meets bittorrent
+  - agent-centric
+  - data sovereignty
+  - inspired by nature

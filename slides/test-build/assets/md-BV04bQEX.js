@@ -1,0 +1,9 @@
+import{_ as r}from"./slidev/VClick-Dy34bnZs.js";import{_ as c}from"./slidev/VClicks-67RMJ3Dk.js";import{o as d,c as _,k as t,g as u,l as n,q as h,s as p,A as o,e}from"./modules/vue-D4SXC02w.js";import{_ as m}from"./default-Bet583MZ.js";import{u as g,f}from"./slidev/context-DHqUi6Wg.js";import"./index-Bj8H3ufz.js";import"./modules/shiki-T7-tTmNb.js";import"./big-circle-BcQR0eat.js";const k=e("h1",null,"Action",-1),v=e("blockquote",null,[e("p",null,"A piece of data that represents a change of state and stored on an agent’s source chain."),e("p",null,[e("a",{href:"https://developer.holochain.org/resources/glossary/#action",target:"_blank"},"Glossary: Action")])],-1),b=e("ul",null,[e("li",null,"the building blocks of all data stored in the network"),e("li",null,"signed by the agent who authored the action"),e("li",null,"link to the hash of their previous action -> a tamper-evident ledger of all state changes")],-1),y=e("p",null,[e("strong",null,"Actions are the system defined verbs of a holochain application")],-1),$={__name:"building-blocks.md__slidev_12",setup(A){const{$slidev:x,$nav:C,$clicksContext:a,$clicks:w,$page:N,$renderContext:B,$frontmatter:s}=g();return a.setup(),(P,T)=>{const l=c,i=r;return d(),_(m,h(p(o(f)(o(s),11))),{default:t(()=>[k,v,u(` 
+Instructor Notes:
+- Actions are the fundamental state change mechanism in Holochain
+- Every time an agent does something, it's recorded as an action
+- Actions are signed by the agent, creating cryptographic accountability
+- The chain of actions creates the tamper-evident ledger
+- The "verbs" analogy helps students understand how actions relate to operations
+- In Challenge 1, students will implement create, update, and delete actions
+`),n(l,null,{default:t(()=>[b]),_:1}),n(i,null,{default:t(()=>[y]),_:1})]),_:1},16)}}},S=$;export{S as default};
