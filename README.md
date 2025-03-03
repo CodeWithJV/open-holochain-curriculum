@@ -31,8 +31,14 @@ git submodule update --init --recursive
 
 Slides are built using [slidev](https://sli.dev/) - checkout their [guide](https://sli.dev/guide/) for a quick overview.
 
+## Scripts
+
+- **Fetch Glossary**: The `scripts/fetch-glossary.js` script downloads and parses the official Holochain Glossary into a Markdown file at `docs/glossary.md`. Run it after saving the glossary HTML page locally as `glossary.html` in the project root.
+  ```
+  node scripts/fetch-glossary.js
+  ```
+
 ## Other learning resources
 
-These existing resources were referenced when building this curriculum
 - [Self paced training](https://resources.holochain.org/self-paced-training/) (2023)
 - [Holochain Gym](https://holochain-gym.github.io/) (2022)
