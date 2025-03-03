@@ -33,11 +33,17 @@ jobs:
       - name: Copy assets for slides
         run: mkdir -p slides/public/assets && cp -r public/assets/* slides/public/assets/ || true
       
+      - name: Create dist directory
+        run: mkdir -p dist
+
+      - name: Copy index to dist 
+        run: cp -r public/* dist/
+        
       - name: Build slides
         run: npm run build
       
-      - name: Copy index to dist
-        run: mkdir -p dist && cp -r public/* dist/
+      - name: Verify slide build
+        run: ls -la dist/slides/*/
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

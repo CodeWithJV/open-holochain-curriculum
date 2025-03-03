@@ -7,11 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build:slides",
     "build:slides": "npm run build:building-blocks && npm run build:project-structure && npm run build:actions-and-entries && npm run build:links-and-collections && npm run build:testing-and-validation",
-    "build:building-blocks": "slidev build slides/building-blocks.md --base /open-holochain-curriculum/slides/building-blocks/ --out dist/slides/building-blocks",
-    "build:project-structure": "slidev build slides/project-structure.md --base /open-holochain-curriculum/slides/project-structure/ --out dist/slides/project-structure",
-    "build:actions-and-entries": "slidev build slides/actions-and-entries.md --base /open-holochain-curriculum/slides/actions-and-entries/ --out dist/slides/actions-and-entries",
-    "build:links-and-collections": "slidev build slides/links-and-collections.md --base /open-holochain-curriculum/slides/links-and-collections/ --out dist/slides/links-and-collections",
-    "build:testing-and-validation": "slidev build slides/testing-and-validation.md --base /open-holochain-curriculum/slides/testing-and-validation/ --out dist/slides/testing-and-validation"
+    "build:building-blocks": "slidev build slides/building-blocks.md --base /open-holochain-curriculum/slides/building-blocks/ --out ./dist/slides/building-blocks",
+    "build:project-structure": "slidev build slides/project-structure.md --base /open-holochain-curriculum/slides/project-structure/ --out ./dist/slides/project-structure",
+    "build:actions-and-entries": "slidev build slides/actions-and-entries.md --base /open-holochain-curriculum/slides/actions-and-entries/ --out ./dist/slides/actions-and-entries",
+    "build:links-and-collections": "slidev build slides/links-and-collections.md --base /open-holochain-curriculum/slides/links-and-collections/ --out ./dist/slides/links-and-collections",
+    "build:testing-and-validation": "slidev build slides/testing-and-validation.md --base /open-holochain-curriculum/slides/testing-and-validation/ --out ./dist/slides/testing-and-validation"
   },
   "repository": {
     "type": "git",
