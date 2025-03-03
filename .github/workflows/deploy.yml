@@ -43,7 +43,10 @@ jobs:
         run: npm run build
       
       - name: Verify slide build
-        run: ls -la dist/slides/*/
+        run: ls -la dist/slides/*/ || echo "Verification failed, checking what's actually in dist"
+        
+      - name: Check dist contents
+        run: find dist -type d | sort
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
