@@ -40,10 +40,18 @@ jobs:
         run: cp -r public/* dist/
         
       - name: Build slides
-        run: npm run build
+        run: |
+          cd slides
+          for slide in building-blocks project-structure actions-and-entries links-and-collections testing-and-validation; do
+            npx slidev build $slide.md --base /open-holochain-curriculum/slides/$slide/
+            mkdir -p ../dist/slides/$slide
+            cp -r .slidev/dist/* ../dist/slides/$slide/
+            rm -rf .slidev/dist
+          done
+          cd ..
       
       - name: Verify slide build
-        run: ls -la dist/slides/*/ || echo "Verification failed, checking what's actually in dist"
+        run: ls -la dist/slides/*/
         
       - name: Check dist contents
         run: find dist -type d | sort
