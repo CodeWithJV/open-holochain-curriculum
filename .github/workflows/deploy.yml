@@ -42,7 +42,7 @@ jobs:
       - name: Build slides
         run: |
           cd slides
-          for slide in building-blocks project-structure actions-and-entries links-and-collections testing-and-validation; do
+          for slide in building-blocks project-structure actions-and-entries links-and-collections testing-and-validation scaffolding-and-signals; do
             npx slidev build $slide.md --base /open-holochain-curriculum/slides/$slide/
             mkdir -p ../dist/slides/$slide
             cp -r dist/* ../dist/slides/$slide/
