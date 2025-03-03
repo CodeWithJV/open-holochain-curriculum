@@ -31,33 +31,33 @@ git submodule update --init --recursive
 
 The curriculum follows a progressive learning sequence through these slide decks:
 
-1. **Building Blocks**
+1. **[Building Blocks](https://codewithjv.github.io/open-holochain-curriculum/slides/building-blocks/)**
    - Core Holochain concepts: hApp, DNA, Network, Node, Agent, Action, Entry
    - Analogies to help understand Holochain (Git + BitTorrent)
    - Zome architecture (integrity vs. coordinator zomes)
    - Agent-centric architecture and source chains
 
-2. **Project Structure**
+2. **[Project Structure](https://codewithjv.github.io/open-holochain-curriculum/slides/project-structure/)**
    - Organization of Holochain projects: DNAs, Tests, UI, Workdir
    - Integrity and Coordinator zome code organization
    - Backend-frontend connection via @holochain/client
    - Package management and build scripts
 
-3. **Actions and Entries**
+3. **[Actions and Entries](https://codewithjv.github.io/open-holochain-curriculum/slides/actions-and-entries/)**
    - Data model: Entries (nouns) and Actions (verbs)
    - Records as wrappers of Entry + Action
    - CRUD operations in Holochain
    - Hash types: ActionHash, EntryHash, AnyDhtHash
    - Entry status and lifecycle management
 
-4. **Links and Collections**
+4. **[Links and Collections](https://codewithjv.github.io/open-holochain-curriculum/slides/links-and-collections/)**
    - Connecting data in the DHT with links
    - Link structure: base, target, type, tag
    - Creating, retrieving, and deleting links
    - Paths as predictable locations in the DHT
    - Using links for collections and relationships
 
-5. **Testing and Validation**
+5. **[Testing and Validation](https://codewithjv.github.io/open-holochain-curriculum/slides/testing-and-validation/)**
    - Validation rules to ensure data integrity
    - Deterministic vs. non-deterministic validation
    - Use cases for validation: data shape, privileges, rate limiting
@@ -126,15 +126,24 @@ Slides are built using [slidev](https://sli.dev/) - checkout their [guide](https
 ## Viewing the Slides
 
 The slides are available online at: 
-- [https://codewithjv.github.io/open-holochain-curriculum/](https://codewithjv.github.io/open-holochain-curriculum/)
+- [Holochain Curriculum Landing Page](https://codewithjv.github.io/open-holochain-curriculum/)
+- [Building Blocks](https://codewithjv.github.io/open-holochain-curriculum/slides/building-blocks/)
+- [Project Structure](https://codewithjv.github.io/open-holochain-curriculum/slides/project-structure/)
+- [Actions and Entries](https://codewithjv.github.io/open-holochain-curriculum/slides/actions-and-entries/)
+- [Links and Collections](https://codewithjv.github.io/open-holochain-curriculum/slides/links-and-collections/)
+- [Testing and Validation](https://codewithjv.github.io/open-holochain-curriculum/slides/testing-and-validation/)
 
 To run the slides locally:
 ```bash
 # Install dependencies
 npm install
 
-# Start the presentation
+# Start a specific presentation
 npx slidev slides/building-blocks.md
+npx slidev slides/project-structure.md
+npx slidev slides/actions-and-entries.md
+npx slidev slides/links-and-collections.md
+npx slidev slides/testing-and-validation.md
 ```
 
 ## Development
