@@ -45,8 +45,8 @@ jobs:
           for slide in building-blocks project-structure actions-and-entries links-and-collections testing-and-validation; do
             npx slidev build $slide.md --base /open-holochain-curriculum/slides/$slide/
             mkdir -p ../dist/slides/$slide
-            cp -r .slidev/dist/* ../dist/slides/$slide/
-            rm -rf .slidev/dist
+            cp -r dist/* ../dist/slides/$slide/
+            rm -rf dist
           done
           cd ..
       
