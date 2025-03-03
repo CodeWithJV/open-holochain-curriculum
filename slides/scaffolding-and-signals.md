@@ -16,6 +16,15 @@ Scaffolding & Signals
 
 Let's explore two powerful features of Holochain development
 
+<v-clicks>
+
+- Scaffolding for rapid application development
+- Signals for real-time communication between agents
+- Build interactive multi-user applications faster
+- Essential tools for complex Holochain apps
+
+</v-clicks>
+
 <!--
 Instructor Notes:
 - This slide covers more advanced Holochain features that build on previous concepts
@@ -35,9 +44,9 @@ Rapidly generate boilerplate code for your Holochain app
 - **What is Scaffolding?** A tool that generates code templates for common Holochain patterns
 - **Benefits:** 
   - Reduces repetitive coding tasks
-  - Enforces best practices
   - Creates consistent code structure
   - Accelerates development
+  - Great way to learn the basics
 - **Use cases:** Entry types, links, CRUD operations, collections
 
 </v-clicks>
@@ -78,27 +87,46 @@ hc scaffold --help
 
 Generate entry types with fields and CRUD operations
 
-<v-clicks>
+<div class="grid grid-cols-3 gap-4">
+<div class="col-span-2">
+
+<v-click>
 
 ```bash
 $ hc scaffold entry-type
-? Entry type name: message
-? Field name: content
-? Choose field type: String
+✔ Entry type name (snake_case): · room
 
-? Add another field? Yes
-? Field name: creator 
-? Choose field type: AgentPubKey
-? Should a link be created? Yes
+Which fields should the entry contain?
+
+✔ Field name (snake_case): · name
+✔ Choose field type: · String
+✔ Should UI be generated for this field? · no
+
+Current fields:
+ name: String
+
+✔ Do you want to proceed with the current entry type? · Confirm
+✔ Which CRUD functions should be scaffolded? · [Selected]
 ```
 
-Generates:
+</v-click>
+
+</div>
+<div class="col-span-1">
+
+<v-click>
+
+### Generates:
 - Entry struct definition
 - Validation functions
 - CRUD zome functions
 - Link creation (if selected)
+- UI components (optional)
 
-</v-clicks>
+</v-click>
+
+</div>
+</div>
 
 ---
 
@@ -167,9 +195,9 @@ Real-time communication mechanism between agents and UI
 
 ---
 
-# Local Signals
+# Local Signals: Zome Side
 
-Communication between cell and UI client
+Communication from your cell to your UI client
 
 <v-clicks>
 
@@ -179,22 +207,52 @@ Communication between cell and UI client
 pub fn create_message(message: Message) -> ExternResult<ActionHash> {
     let hash = create_entry(&EntryTypes::Message(message.clone()))?;
     
+    // Create a signal with entry and action info
+    let new_signal = Signal::EntryCreated {
+        app_entry: message,
+        action: hash.clone(),
+    };
+    
     // Emit signal to UI
-    emit_signal(Signal::MessageCreated(message))?;
+    emit_signal(&new_signal)?;
     
     Ok(hash)
 }
 ```
 
-```javascript
-// In your UI code
-client.on('signal', signal => {
-  if (signal.payload.type === 'MessageCreated') {
-    // Update UI with new message
-    addMessageToUI(signal.payload.data);
+- [HDK emit_signal](https://docs.rs/hdk/latest/hdk/p2p/fn.emit_signal.html)
+- [Signal implementation guide](https://developer.holochain.org/build/signals/)
+
+</v-clicks>
+
+---
+
+# Local Signals: UI Side
+
+Receiving and handling signals in your frontend
+
+<v-clicks>
+
+```typescript
+// In your Svelte component
+client.on('signal', (signal) => {
+  // Type checking
+  if (!(SignalType.App in signal)) return;
+  if (signal.App.zome_name !== "chatroom") return;
+  
+  const payload = signal.App.payload as ChatroomSignal;
+  switch (payload.type) {
+    case 'EntryCreated':
+      if (payload.app_entry.type === 'Message' && 
+          encodeHashToBase64(payload.app_entry.room_hash) === encodeHashToBase64(roomHash)) {
+        hashes = [...hashes, payload.action.hashed.hash];
+      }
+      break;
   }
 });
 ```
+
+[@holochain/client AppSignal reference](https://github.com/holochain/holochain-client-js/blob/main/docs/client.appwebsocket.on.md)
 
 </v-clicks>
 
@@ -209,7 +267,6 @@ Agent-to-agent communication across the network
 ```rust
 #[hdk_extern]
 pub fn send_message(message: Message) -> ExternResult<ActionHash> {
-    // Create message in DHT
     let hash = create_entry(&EntryTypes::Message(message.clone()))?;
     
     // Get members in the room
@@ -228,13 +285,13 @@ pub fn send_message(message: Message) -> ExternResult<ActionHash> {
 }
 ```
 
+-  [HDK send_remote_signal](https://docs.rs/hdk/latest/hdk/p2p/fn.send_remote_signal.html)
+
 </v-clicks>
 
 ---
 
 # Receiving Remote Signals
-
-Set up a handler for incoming remote signals
 
 <v-clicks>
 
@@ -263,6 +320,7 @@ pub fn init(_: ()) -> ExternResult<InitCallbackResult> {
 }
 ```
 
+
 </v-clicks>
 
 ---
@@ -284,31 +342,6 @@ Important security practices when working with signals
 - **Capability grants**
   - Carefully control who can send signals to your agent
   - Most signal handlers should have restricted access
-
-</v-clicks>
-
----
-
-# Example: Chat Application
-
-Combining scaffolding and signals for a real-time chat app
-
-<v-clicks>
-
-1. **Scaffold the data model**
-   - `Room` entry type with name and creator
-   - `Message` entry type with content, creator, timestamp, room reference
-   - Links between agents, rooms, and messages
-
-2. **Implement signal handling**
-   - Send remote signals when messages are created
-   - Set up receivers with capability grants
-   - Handle race conditions in UI with retry logic
-
-3. **Result:** Real-time chat experience where:
-   - New rooms appear immediately for all agents
-   - Messages are delivered instantly to room members
-   - UI updates reflect the current state of the application
 
 </v-clicks>
 
@@ -337,23 +370,16 @@ Build a messaging app with scaffolding and signals
 </v-clicks>
 
 ---
+layout: end
+---
+
 
 # Summary
 
-<v-clicks>
+<div style="text-align: center; font-weight: normal;">
+  <span style="font-weight: bold; color: black;">Scaffolding</span> provides a quick way to generate <br/>common Holochain patterns
+</div>
 
-- **Scaffolding** provides a quick way to generate common Holochain patterns
-  - Entry types, collections, links, CRUD operations
-  - Saves time and enforces best practices
-
-- **Signals** enable real-time communication
-  - Local signals (cell to UI)
-  - Remote signals (agent to agent)
-  - Security considerations for handling signals
-
-- **Together, these tools allow you to:**
-  - Build complex applications quickly
-  - Create responsive, real-time user experiences
-  - Develop collaborative multi-user applications
-
-</v-clicks>
+<div style="text-align: center; font-weight: normal;margin-top:10px;">
+  <span style="font-weight: bold; color: black;">Signals</span> enable real-time communication
+</div>
