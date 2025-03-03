@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: Copy assets for slides
+        run: mkdir -p slides/public/assets && cp -r public/assets/* slides/public/assets/ || true
+      
       - name: Build slides
         run: npm run build
       
